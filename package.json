@@ -1,0 +1,24 @@
+{
+	"name": "Data.List-js",
+	"description": "experimental haskell list-like operations for nodejs",
+	"main": "./index.js",
+	"version": "0.0.1",
+	"author": "Andrew Darqui (http://github.com/adarqui)",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/adarqui/Data.List-js.git"
+	},
+	"licenses": [
+		{
+			"type": "MIT"
+		}
+	],
+	"bugs": {
+		"url" : "http://github.com/adarqui/Data.List-js/issues"
+	},
+	"dependencies": {
+		"vows" : "0.7.0",
+		"Prelude-js" : "adarqui/Prelude-js.git",
+		"Data.Maybe-js" : "adarqui/Data.Maybe-js.git"
+	}
+}
