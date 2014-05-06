@@ -8,37 +8,33 @@ var
  * BASIC FUNCTIONS
  * -----------------------------------------------------------------------*/
 
-
 var index = function(i, L) {
+	var start, lr, data;
+
+	lr = goNext;
 	if(i >= 0) {
-		return indexLR(i, L.head(), goNext, L);
+		start = L.head();
 	} else {
-		return indexLR(i*(-1), L.last(), goPrev, L);
+		i = i * (-1);
+		start = L.last();
+		lr = goPrev;
 	}
-}
 
-
-
-var indexLR = function(i, start, lr, L) {
-	for(var v = start; v != null && i >= 0; v = lr(v)) {
-		if(i === 0) {
-			return v.getData();
+	data = null;
+	iterLRbreak(start, null, lr, function(v, ret) {
+		if(i == 0) {
+			ret.v = data = v.getData();
+			return;
 		}
 		i -= 1;
-	}
-}
+	});
 
+	return data;
+}
 
 
 var join = function() {
 	/* join :: [a] -> [a] -> ... -> [a] */
-	/*
-	var l = new List();
-	for(var v in arguments) {
-		l.join(arguments[v]);
-	}
-	return l;
-	*/
 	var l = new List();
 	for(var v in arguments) {
 		var argument = arguments[v];
