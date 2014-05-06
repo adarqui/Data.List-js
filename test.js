@@ -2072,3 +2072,60 @@ vows.describe('Preludejs::eq,not,notEq,otherwise,compare').addBatch({
 		}
 	}
 }).run();
+
+vows.describe('Data.List-js::index,lindex,rindex').addBatch({
+	'index .. ["hi","yo"]': {
+		topic: function() {
+			var l = new list.List("hi","yo");
+			return l;
+		},
+		'index 0': {
+			topic: function(topic) {
+				return list.index(0, topic);
+			},
+			'index 0 should return "hi"': function(topic) {
+				assert.equal(topic.toString(), 'hi');
+			}
+		},
+		'index 1': {
+			topic: function(topic) {
+				return list.index(1, topic);
+			},
+			'index 1 should return "yo"': function(topic) {
+				assert.equal(topic.toString(), 'yo');
+			}
+		},
+		'lindex 0': {
+			topic: function(topic) {
+				return list.lindex(0, topic);
+			},
+			'lindex 0 should return "hi"': function(topic) {
+				assert.equal(topic.toString(), 'hi');
+			}
+		},
+		'lindex 1': {
+			topic: function(topic) {
+				return list.lindex(1, topic);
+			},
+			'lindex 1 should return "yo"': function(topic) {
+				assert.equal(topic.toString(), 'yo');
+			}
+		},
+		'rindex 0': {
+			topic: function(topic) {
+				return list.rindex(0, topic);
+			},
+			'rindex 0 should return "yo"': function(topic) {
+				assert.equal(topic.toString(), 'yo');
+			}
+		},
+		'rindex 1': {
+			topic: function(topic) {
+				return list.rindex(1, topic);
+			},
+			'rindex 1 should return "hi"': function(topic) {
+				assert.equal(topic.toString(), 'hi');
+			}
+		}
+	}
+}).run();

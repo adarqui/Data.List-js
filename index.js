@@ -9,26 +9,28 @@ var
  * -----------------------------------------------------------------------*/
 
 var index = function(i, L) {
-	var start, lr, data;
+	return lrindex(i, L.head(), null, goNext);
+}
 
-	lr = goNext;
-	if(i >= 0) {
-		start = L.head();
-	} else {
-		i = i * (-1);
-		start = L.last();
-		lr = goPrev;
-	}
+var lindex = index;
 
-	data = null;
-	iterLRbreak(start, null, lr, function(v, ret) {
+var rindex = function(i, L) {
+	return lrindex(i, L.last(), null, goPrev);
+}
+
+var lrindex = function(i, start, last, lr) {
+	var data = null;
+
+	var closure = function(v, ret) {
 		if(i == 0) {
-			ret.v = data = v.getData();
+			data = v.getData();
+			ret.v = true;
 			return;
 		}
-		i -= 1;
-	});
+		i = i - 1;
+	}
 
+	iterLRbreak(start, last, lr, closure);
 	return data;
 }
 
@@ -1693,6 +1695,8 @@ module.exports = {
 	ListElement : ListElement,
 	/* basic functions */
 	index : index,
+	lindex : lindex,
+	rindex : rindex,
 	join : join,
 	head : head,
 	last : last,
