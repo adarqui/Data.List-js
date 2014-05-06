@@ -8,14 +8,20 @@ vows.describe('Data.List.js').addBatch({
 		topic: new list.List(),
 		'head()': {
 			topic: function(topic) { return list.head(topic) },
-			'generates an error with head()': function(topic) {
-				assert.throws(topic, Error);
+			'returns null if empty': function(topic) {
+				assert.equal(topic, null);
+			}
+		},
+		'last()': {
+			topic: function(topic) { return list.last(topic) },
+			'returns null if empty': function(topic) {
+				assert.equal(topic, null);
 			}
 		},
 		'tail()': {
 			topic: function(topic) { return list.tail(topic) },
-			'generates an error': function(topic) {
-				assert.throws(topic, Error);
+			'returns null if empty': function(topic) {
+				assert.equal(list.empty(topic), true);
 			}
 		},
 		'init()': {

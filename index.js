@@ -51,11 +51,7 @@ var join = function() {
 
 var head = function(L) {
 	/* head :: [a] -> a */
-	var h = L.head();
-	if(h === null) {
-		throw new Error('Head of an empty list.');
-	}
-	return h;
+	return L.head();
 }
 
 
@@ -98,7 +94,6 @@ var nil = function(L) {
 	/* nil :: [a] -> Boolean */
 	return L.size() === 0;
 }
-
 
 
 var length = function(L) {
@@ -1703,6 +1698,7 @@ module.exports = {
 	tail : tail,
 	init : init,
 	nil : nil,
+	empty : nil,
 	length : length,
 	size : size,
 	/* list transformations */
